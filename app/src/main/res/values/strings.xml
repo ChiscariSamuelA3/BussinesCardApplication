@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BussinesCardApplication</string>
+
+    <array name="countries">
+        <item>Romania</item>
+        <item>UK</item>
+        <item>Italy</item>
+        <item>Spain</item>
+        <item>Belgium</item>
+        <item>Germany</item>
+    </array>
+</resources>

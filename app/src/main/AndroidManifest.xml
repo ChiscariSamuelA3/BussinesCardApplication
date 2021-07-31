@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.MyCard.bussinescardapplication">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28"
+        />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
+    <application
+
+        android:requestLegacyExternalStorage="true"
+        android:allowBackup="true"
+        android:icon="@mipmap/iconcard"
+        android:label="MyCard"
+        android:roundIcon="@mipmap/iconcard"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BussinesCardApplication">
+        <activity android:name="com.MyCard.bussinescardapplication.savedActivity"/>
+        <activity android:name="com.MyCard.bussinescardapplication.cardActivity" />
+        <activity android:name="com.MyCard.bussinescardapplication.menuActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.MyCard.bussinescardapplication.panelActivity" />
+        <activity android:name="com.MyCard.bussinescardapplication.MainActivity"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+
+</manifest>

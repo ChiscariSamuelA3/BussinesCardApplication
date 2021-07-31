@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "934219194468",
+    "project_id": "bussinescardapplication",
+    "storage_bucket": "bussinescardapplication.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934219194468:android:56a9df23aec5237f647f71",
+        "android_client_info": {
+          "package_name": "com.MyCard.bussinescardapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934219194468-6ibugr1ovpvth5jp4ah4v9p67r3f6e4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW16EA9ujIZFZKI8AnupoAfynMq9XJ6FQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934219194468-6ibugr1ovpvth5jp4ah4v9p67r3f6e4l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934219194468:android:dbc05147648b1d92647f71",
+        "android_client_info": {
+          "package_name": "com.example.bussinescardapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934219194468-6ibugr1ovpvth5jp4ah4v9p67r3f6e4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW16EA9ujIZFZKI8AnupoAfynMq9XJ6FQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934219194468-6ibugr1ovpvth5jp4ah4v9p67r3f6e4l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
