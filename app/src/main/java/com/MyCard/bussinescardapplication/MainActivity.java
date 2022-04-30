@@ -11,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,12 +28,15 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+
 import java.io.Serializable;
+import java.util.Random;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity implements Serializable{
@@ -51,10 +55,15 @@ public class MainActivity extends AppCompatActivity implements Serializable{
     private StorageReference storageReference;
     private boolean imageUploaded = false;
 
+    int randomnumber;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         initViews();
 
@@ -70,7 +79,17 @@ public class MainActivity extends AppCompatActivity implements Serializable{
                             assert intent != null;
                             imageUri = intent.getData();
 
+
+
                             imgProfile.setImageURI(imageUri);
+
+                            //final int randomnumber = new Random().nextInt(9999);
+                            randomnumber = new Random().nextInt(9999);
+
+                            SharedPreferences pref = getSharedPreferences("key", MODE_PRIVATE);
+                            SharedPreferences.Editor myEditor = pref.edit();
+                            myEditor.putInt("savenumber", randomnumber);
+                            myEditor.apply();
 
                             uploadPicture();
 
@@ -101,21 +120,20 @@ public class MainActivity extends AppCompatActivity implements Serializable{
                 }
                 else
                 {
+
                     initPanel();
                 }
             }
         });
 
-
     }
-
 
     private void uploadPicture() {
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Uploading Image...");
         pd.show();
 
-        StorageReference ImagesRef = storageReference.child("profile.jpg");
+        StorageReference ImagesRef = storageReference.child("user/"+randomnumber+"/profile.jpg");
 
         ImagesRef.putFile(imageUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -124,10 +142,6 @@ public class MainActivity extends AppCompatActivity implements Serializable{
                         pd.dismiss();
                         Snackbar.make(findViewById(android.R.id.content), "Image Uploaded", Snackbar.LENGTH_LONG).show();
                         imageUploaded = true;
-
-
-
-
                     }
                 })
         .addOnFailureListener(new OnFailureListener() {

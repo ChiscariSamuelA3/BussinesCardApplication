@@ -2,6 +2,7 @@ package com.MyCard.bussinescardapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ public class cardActivity extends AppCompatActivity implements Serializable {
     private ImageView finalImgProfile;
     private Button saveCard;
     public static boolean activated = false;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +44,6 @@ public class cardActivity extends AppCompatActivity implements Serializable {
         templateTxt = findViewById(R.id.templateText);
 
         finalImgProfile = findViewById(R.id.finalImgProfile);
-
-
-
 
 
         String namer = getIntent().getStringExtra("namex");

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -23,8 +24,11 @@ public class savedActivity extends AppCompatActivity {
     private ImageView finalImgProfile;
     public Uri imgUri;
 
+    int finalNr;
+
     private FirebaseStorage storage;
     private StorageReference storageReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +49,11 @@ public class savedActivity extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        StorageReference profileRef = storageReference.child("profile.jpg");
+        SharedPreferences pref = getSharedPreferences("key", MODE_PRIVATE);
+        int numberSaved = pref.getInt("savenumber",0);
+
+        //StorageReference profileRef = storageReference.child("profile.jpg");
+        StorageReference profileRef = storageReference.child("user/"+numberSaved+"/profile.jpg");
 
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -55,7 +63,7 @@ public class savedActivity extends AppCompatActivity {
         });
 
 
-        SharedPreferences myPref = getSharedPreferences("myKey", MODE_PRIVATE);
+            SharedPreferences myPref = getSharedPreferences("myKey", MODE_PRIVATE);
             String nameSaved = myPref.getString("savename","Name");
             String jobSaved = myPref.getString("savejob", "Job");
             String companySaved = myPref.getString("savecompany", "Company");
